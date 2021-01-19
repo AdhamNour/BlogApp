@@ -9,7 +9,8 @@ import './Blog.css';
 class Blog extends Component {
 
     state = {
-        posts: []
+        posts: [],
+        selectedPostID: null,
     };
 
     componentDidMount () {
@@ -25,12 +26,16 @@ class Blog extends Component {
                 this.setState({ posts: updatedPosts})
             });
     }
+
+    selectPostHandler = (id) => {
+        this.setState({ selectedPostID: id });
+    };
     
     render () {
         const posts = this.state.posts.map(
             post =>{
                 return (
-                    <Post title={post.title} key={post.id} author={post.author} />
+                    <Post title={post.title} key={post.id} author={post.author} onSelect={() => this.selectPostHandler(post.id)} />
                 )
             }
             
@@ -41,7 +46,7 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost selectedPostID={this.state.selectedPostID} />
                 </section>
                 <section>
                     <NewPost />
