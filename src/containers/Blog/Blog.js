@@ -11,6 +11,7 @@ class Blog extends Component {
     state = {
         posts: [],
         selectedPostID: null,
+        erorr : false
     };
 
     componentDidMount () {
@@ -24,6 +25,8 @@ class Blog extends Component {
                     }
                 })
                 this.setState({ posts: updatedPosts})
+            }).catch(error => {
+                this.setState({ erorr: true })
             });
     }
 
@@ -32,14 +35,16 @@ class Blog extends Component {
     };
     
     render () {
-        const posts = this.state.posts.map(
+        let posts = this.state.posts.map(
             post =>{
                 return (
                     <Post title={post.title} key={post.id} author={post.author} onSelect={() => this.selectPostHandler(post.id)} />
                 )
             }
-            
             )
+        if(this.state.erorr){
+            posts = <p>Some error with your internet connection</p>
+        }
         return (
             <div>
                 <section className="Posts">
