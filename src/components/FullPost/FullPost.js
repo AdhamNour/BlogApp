@@ -20,12 +20,12 @@ class FullPost extends Component {
 
     componentDidUpdate() {
         if(this.props.selectedPostID != null) {
-            axios.get("https://jsonplaceholder.typicode.com/posts/"+this.props.selectedPostID).then((response)=>this.setState({loadedPosts: response.data}));
+            axios.get("/posts/"+this.props.selectedPostID).then((response)=>this.setState({loadedPosts: response.data}));
         }
     }
 
     deletePostHandler = () => {
-        axios.delete("https://jsonplaceholder.typicode.com/posts/"+this.props.selectedPostID).then((response)=>console.log(response));
+        axios.delete("/posts/"+this.props.selectedPostID).then((response)=>console.log(response));
     }
     render () {
         let post = <p style = {{textAlign: 'center'}} >Please select a Post!</p>;
