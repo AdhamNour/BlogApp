@@ -46,7 +46,15 @@ class Blog extends Component {
             posts = <p>Some error with your internet connection</p>
         }
         return (
-            <div>
+            <div className= "Blog">
+                <header>
+                    <nav>
+                        <ul>
+                            <li><a href="/">HOME</a></li>
+                            <li><a href="/new-post">New Post</a></li>
+                        </ul>
+                    </nav>
+                </header>
                 <section className="Posts">
                     {posts}
                 </section>
