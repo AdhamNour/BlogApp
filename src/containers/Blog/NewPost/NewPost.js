@@ -18,6 +18,10 @@ class NewPost extends Component {
         axios.post('/posts',post).then(response => {console.log(response)})
     }
 
+    componentDidMount() {
+        console.log(this.props)
+    }
+
     render () {
         return (
             <div className="NewPost">
