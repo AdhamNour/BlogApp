@@ -20,7 +20,7 @@ class Blog extends Component {
                     activeClassName="my-active"
                     activeStyle={{ color: "red", textDecoration: "underline" }}
                     >
-                    HOME
+                    POSTS
                     </NavLink>
                 </li>
                 <li>
